@@ -1,0 +1,44 @@
+<phyphox xmlns="http://phyphox.org/xml" xmlns:editor="http://phyphox.org/editor/xml" version="1.7" editor:version="1.0" locale="en">
+    <title>SQM BLE</title>
+    <category>Astro</category>
+    <color>ffffff</color>
+    <description></description>
+    <data-containers>
+        <container size="1000" static="false">T1</container>
+        <container size="1000" static="false">T2</container>
+        <container size="1000" static="false">t</container>
+    </data-containers>
+    <input>
+        <bluetooth editor:uuid="101" editor:posx="100" editor:posy="250" id="SQM-BLE" name="SQM-BLE" uuid="cddf0001-30f7-4671-8b43-5e40ba53514a" mode="notification" rate="1" subscribeOnStart="false">
+            <output char="cddf1002-30f7-4671-8b43-5e40ba53514a" conversion="string" label="Time" extra="time">t</output>
+            <output char="cddf1002-30f7-4671-8b43-5e40ba53514a" conversion="float32LittleEndian" offset="0">T1</output>
+            <output char="cddf1002-30f7-4671-8b43-5e40ba53514a" conversion="float32LittleEndian" offset="4">T2</output>
+        </bluetooth>
+    </input>
+    <output>
+    </output>
+    <analysis sleep="0"  onUserInput="false">
+    </analysis>
+    <views>
+        <view label="SIMPLE">
+            <graph editor:uuid="155" editor:posx="747.671875" editor:posy="230.5625" label="Cahaya" aspectRatio="2.5" style="lines" lineWidth="3" color="ffff00" partialUpdate="true" history="1" labelX="Waktu" labelY="Kecerahan" labelZ="" unitX="s" unitY="Mag-arsec" unitZ="" logX="false" logY="false" logZ="false" xPrecision="3" yPrecision="3" zPrecision="3" scaleMinX="auto" scaleMaxX="auto" scaleMinY="auto" scaleMaxY="auto" scaleMinZ="auto" scaleMaxZ="auto" minX="0" maxX="0" minY="0" maxY="0" minZ="0" maxZ="0"  mapWidth="0"       >
+                <input axis="x">t</input>
+                <input axis="y">T1</input>
+            </graph>
+            <graph editor:uuid="156" editor:posx="748.515625" editor:posy="389.8125" label="Temperatur" aspectRatio="2.5" style="lines" lineWidth="3" color="00ff00" partialUpdate="true" history="1" labelX="waktu" labelY="Suhu" labelZ="" unitX="s" unitY="°C" unitZ="" logX="false" logY="false" logZ="false" xPrecision="3" yPrecision="3" zPrecision="3" scaleMinX="auto" scaleMaxX="auto" scaleMinY="auto" scaleMaxY="auto" scaleMinZ="auto" scaleMaxZ="auto" minX="0" maxX="0" minY="0" maxY="0" minZ="0" maxZ="0"  mapWidth="0"       >
+                <input axis="x">t</input>
+                <input axis="y">T2</input>
+            </graph>
+            <value editor:uuid="157" editor:posx="742.421875" editor:posy="542.375" label="Kecerahan" size="2" precision="2" scientific="false" unit="Mag-arcsec" factor="1" color="green">
+                <input>T1</input>
+            </value>
+            <value editor:uuid="158" editor:posx="743.140625" editor:posy="637.140625" label="Temp2" size="2" precision="2" scientific="false" unit="°C" factor="1" color="blue">
+                <input>T2</input>
+            </value>
+        </view>
+    </views>
+    <export>
+        <set name="DST Data">
+        </set>
+    </export>
+</phyphox>
